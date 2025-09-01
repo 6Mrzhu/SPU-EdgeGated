@@ -1,0 +1,22 @@
+# ninja log v5
+3	66509	1748176208296385775	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/grouping/grouping_cuda.o	8aa661d506bab82a
+6	66564	1748176208356385746	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/sampling/sampling_cuda.o	681b05ad2a5d1f19
+1	66946	1748176208736385562	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/ballquery/ballquery_cuda.o	f84a01b39be358a1
+1	66964	1748176208756385555	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/knnquery/knnquery_cuda.o	6a3d4efb1707d0b2
+2	67363	1748176209156385362	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/knnquery_heap/knnquery_heap_cuda.o	7632b5746fab94d1
+4	68002	1748176209786385064	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/grouping_int/grouping_int_cuda.o	d517166859e84f80
+5	68042	1748176209826385043	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/interpolation/interpolation_cuda.o	1249d9ec49a628c9
+7	69286	1748176211076384189	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/labelstat/labelstat_cuda.o	94ac622646de1f0f
+8	69972	1748176211766383635	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/featuredistribute/featuredistribute_cuda.o	d29231518ddb60db
+0	94658	1748176236406377272	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/pointops_api.o	8074dac8f7f8d109
+1	105196	1748176246956375175	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/ballquery/ballquery_cuda_kernel.o	17946270561dbf86
+6	105478	1748176247266375110	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/sampling/sampling_cuda_kernel.o	1f1481006edb03e5
+18	61881	1748177500846198313	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/knnquery/knnquery_cuda_kernel.o	8b8474ff2f8b495
+18	61927	1748177500906198018	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/ballquery/ballquery_cuda_kernel.o	1dc52bdcaf4c9675
+19	61978	1748177500946197823	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/knnquery_heap/knnquery_heap_cuda_kernel.o	2a5f8d673a6d2971
+19	62971	1748177501926193046	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/grouping/grouping_cuda_kernel.o	d7d3b6872f76d297
+20	63379	1748177502356190992	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/sampling/sampling_cuda_kernel.o	bb20c56d96ac9853
+20	64015	1748177502996190897	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/interpolation/interpolation_cuda_kernel.o	9fdd79beb5695457
+22	64098	1748177503076190889	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/featuredistribute/featuredistribute_cuda_kernel.o	ce36905bed21d945
+21	68106	1748177507096190308	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/labelstat/labelstat_cuda_kernel.o	ce39950116906652
+19	73474	1748177512456187466	/home/zhuyilong2/SPU-Down/network/pointops/build/temp.linux-x86_64-3.8/src/grouping_int/grouping_int_cuda_kernel.o	4ee475d60de76f13

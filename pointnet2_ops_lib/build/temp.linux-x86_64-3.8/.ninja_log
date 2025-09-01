@@ -1,0 +1,25 @@
+# ninja log v5
+2	25374	1744015870172321211	/home/zhuyilong2/SPU-Down/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/ball_query_gpu.o	9a10767f5b7d8de8
+3	25391	1744015870202321205	/home/zhuyilong2/SPU-Down/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/interpolate_gpu.o	dc1144dd4260f75
+3	25407	1744015870212321201	/home/zhuyilong2/SPU-Down/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/group_points_gpu.o	74ee700c60f5866a
+3	26242	1744015871052320966	/home/zhuyilong2/SPU-Down/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/sampling_gpu.o	c574e56ee2ff184c
+1	33917	1744015878722319085	/home/zhuyilong2/SPU-Down/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/group_points.o	5a96a42c19d33e70
+2	34063	1744015878872319050	/home/zhuyilong2/SPU-Down/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/sampling.o	aaf54ada8ba32de0
+1	34147	1744015878962319031	/home/zhuyilong2/SPU-Down/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/ball_query.o	ae5a19978a0cf6e7
+1	34333	1744015879142318989	/home/zhuyilong2/SPU-Down/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/interpolate.o	2f82038842d1719a
+2	37975	1744015882782318323	/home/zhuyilong2/SPU-Down/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/bindings.o	5ed7ff2813d7a312
+4	12612	1748090067608470915	/home/zhuyilong2/SPU-Down/network/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/knnquery_cuda.o	a5d6b09d27170566
+3	12632	1748090067628470914	/home/zhuyilong2/SPU-Down/network/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/knnquery_heap_cuda.o	926e3ff9641c2e6a
+5	21900	1748090076888467559	/home/zhuyilong2/SPU-Down/network/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/ball_query_gpu.o	babccadbfc59bc6e
+5	21901	1748090076888467559	/home/zhuyilong2/SPU-Down/network/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/interpolate_gpu.o	2dd9b19563d3450f
+6	21901	1748090076888467559	/home/zhuyilong2/SPU-Down/network/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/group_points_gpu.o	3f46fd5aab287ff1
+6	22110	1748090077108467533	/home/zhuyilong2/SPU-Down/network/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/sampling_gpu.o	d5821e5158804392
+2	30238	1748090085228467370	/home/zhuyilong2/SPU-Down/network/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/interpolate.o	960823fe96d9ec4b
+4	30299	1748090085298467368	/home/zhuyilong2/SPU-Down/network/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/sampling.o	1d8310e86c2a4b97
+3	30301	1748090085298467368	/home/zhuyilong2/SPU-Down/network/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/ball_query.o	98739cba4b5ef4df
+2	30347	1748090085338467374	/home/zhuyilong2/SPU-Down/network/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/group_points.o	11dc964a3efce6d2
+4	33152	1748090088138467573	/home/zhuyilong2/SPU-Down/network/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/bindings.o	80fd152effc1e7a2
+23	18819	1748090348068406710	/home/zhuyilong2/SPU-Down/network/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/knnquery_heap_cuda_kernel.o	7931b2d883c70900
+23	18820	1748090348068406710	/home/zhuyilong2/SPU-Down/network/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/knnquery_cuda_kernel.o	4aec204798f17f5a
+5	22549	1748176967836290793	/home/zhuyilong2/SPU-Down/network/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/knnquery_heap_cuda_kernel.o	7931b2d883c70900
+6	22549	1748176967836290793	/home/zhuyilong2/SPU-Down/network/pointnet2_ops_lib/build/temp.linux-x86_64-3.8/pointnet2_ops/_ext-src/src/knnquery_cuda_kernel.o	4aec204798f17f5a

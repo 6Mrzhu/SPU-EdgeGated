@@ -1,0 +1,10 @@
+# ninja log v5
+3	24374	1743999347854137103	/home/zhuyilong2/SPU-DMI/pointnet2_ops_lib/build/temp.linux-x86_64-cpython-38/pointnet2_ops/_ext-src/src/interpolate_gpu.o	3a4e7a38b3794d47
+1	24375	1743999347854137103	/home/zhuyilong2/SPU-DMI/pointnet2_ops_lib/build/temp.linux-x86_64-cpython-38/pointnet2_ops/_ext-src/src/ball_query_gpu.o	4359281b4f7de5fc
+2	24375	1743999347854137103	/home/zhuyilong2/SPU-DMI/pointnet2_ops_lib/build/temp.linux-x86_64-cpython-38/pointnet2_ops/_ext-src/src/group_points_gpu.o	cb2c38e6de47d92f
+4	24931	1743999348424137011	/home/zhuyilong2/SPU-DMI/pointnet2_ops_lib/build/temp.linux-x86_64-cpython-38/pointnet2_ops/_ext-src/src/sampling_gpu.o	ce922b435278a79d
+0	34160	1743999357654135623	/home/zhuyilong2/SPU-DMI/pointnet2_ops_lib/build/temp.linux-x86_64-cpython-38/pointnet2_ops/_ext-src/src/ball_query.o	97f7856dd56acef4
+2	34282	1743999357774135607	/home/zhuyilong2/SPU-DMI/pointnet2_ops_lib/build/temp.linux-x86_64-cpython-38/pointnet2_ops/_ext-src/src/group_points.o	8ffa6081a8ecff82
+3	34320	1743999357824135600	/home/zhuyilong2/SPU-DMI/pointnet2_ops_lib/build/temp.linux-x86_64-cpython-38/pointnet2_ops/_ext-src/src/interpolate.o	64d9f85e4391ed8
+4	34385	1743999357884135589	/home/zhuyilong2/SPU-DMI/pointnet2_ops_lib/build/temp.linux-x86_64-cpython-38/pointnet2_ops/_ext-src/src/sampling.o	fd8a070e43f229e8
+1	37693	1743999361184135147	/home/zhuyilong2/SPU-DMI/pointnet2_ops_lib/build/temp.linux-x86_64-cpython-38/pointnet2_ops/_ext-src/src/bindings.o	e493e8ba7e202ac3
