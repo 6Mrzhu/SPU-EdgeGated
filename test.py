@@ -16,6 +16,5 @@ class MLP(nn.Module):
 if __name__ =="__main__":
     pooler = MLP(in_channels=64, out_channels=128).cuda()
     p1 = torch.randn(2, 256, 64).cuda()
-    # 执行池化
     p2 = pooler(p1.permute(0,2,1))
     print(p2.shape)
