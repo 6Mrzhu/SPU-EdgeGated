@@ -218,7 +218,7 @@ def pc_prediction(net, input_pc, patch_num_ratio=3):
             _, up_point = operations.fps_subsample(
                 up_point, args.num_point)
 
-        if up_point.size(1) != 3:  #检查第二维是不是3
+        if up_point.size(1) != 3:  
             assert (up_point.size(2) == 3), "ChamferLoss is implemented for 3D points"
             up_point = up_point.transpose(2, 1).contiguous()
         up_point = up_point * furthest_distance + centroid
@@ -227,7 +227,7 @@ def pc_prediction(net, input_pc, patch_num_ratio=3):
         up_point_list.append(up_point)
 
 
-   # print("结束")
+   # print("ending")
     return input_list, up_point_list, patch_time / num_patches
 
 
@@ -275,7 +275,7 @@ def test1(result_dir, net=None, shape_count=39726):  #2048
         np.savetxt(out_path[:-4] + '.xyz', pred_pc, fmt='%.6f')
 
    #print('Average Inference Time: {} ms'.format(total_time / len(test_files) * 1000.))
-    #print("走到这")
+   
     return target_folder
 def test(result_dir, net = None, shape_count=2048):
     """
