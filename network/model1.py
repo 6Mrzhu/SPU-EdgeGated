@@ -79,9 +79,9 @@ class Model(object):
         self.input = input_pc.detach()
         #self.alpha =ALPHA
         B, C, N = input_pc.shape
-        downsamplenum = int(N / self.R)  # 假设 R 是 4
+        downsamplenum = int(N / self.R) 
 
-        #使用高效的点采样和索引函数
+      
         far_point = farthest_point_sample(xyz=input_pc.permute(0, 2, 1), npoint=downsamplenum)
         input_point = index_points(input_pc.permute(0, 2, 1), far_point)
         #print("input_point",input_point.shape)
