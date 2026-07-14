@@ -14,7 +14,7 @@ from ops import group
 
 
 class DifferentiableKNN(nn.Module):
-    """可微分的K近邻查找层"""
+   
 
     def __init__(self, k=16):
         super(DifferentiableKNN, self).__init__()
@@ -22,28 +22,28 @@ class DifferentiableKNN(nn.Module):
 
     def forward(self, query_points, support_points):
         """
-        参数:
+        
         query_points: (B, M, C)
         support_points: (B, N, C)
 
-        返回:
-        indices: (B, M, k)  最近邻索引
-        weights: (B, M, k)  可微分权重
+       
+        indices: (B, M, k)  
+        weights: (B, M, k)  
         """
-        # 计算查询点与支持点之间的距离
+       
         dist = torch.cdist(query_points, support_points)  # (B, M, N)
 
-        # 获取k个最近邻的索引
+      
         _, indices = torch.topk(dist, self.k, largest=False)  # (B, M, k)
 
-        # 使用softmax生成可微分权重
+      
         weights = F.softmax(-dist, dim=-1)  # (B, M, N)
         weights = torch.gather(weights, 2, indices)  # (B, M, k)
 
         return indices, weights
 
 class UniformInterpolationLayer(nn.Module):
-    """可微分的均匀插值层"""
+    
 
     def __init__(self, k=16, num_new_points_per_point=1):
         super(UniformInterpolationLayer, self).__init__()
@@ -53,48 +53,47 @@ class UniformInterpolationLayer(nn.Module):
 
     def forward(self, x):
         """
-        参数:
-        x: (B, N, C)  输入点云
-
-        返回:
-        (B, N + N*num_new_points_per_point, C)  插值后的点云
+      
+        x: (B, N, C)  
+        reture：
+        (B, N + N*num_new_points_per_point, C) 
         """
         B, N, C = x.shape
 
-        # 为每个点生成新点的位置（随机但可学习）
+       
         rand_directions = torch.randn(B, N, self.num_new_points_per_point, C, device=x.device)
         rand_directions = F.normalize(rand_directions, p=2, dim=-1)  # (B, N, num_new, C)
 
-        # 学习每个点的局部半径
+      
         local_radius = torch.norm(x, p=2, dim=-1, keepdim=True) * 0.1  # (B, N, 1)
         local_radius = local_radius.unsqueeze(2).expand(-1, -1, self.num_new_points_per_point, -1)
 
-        # 生成新点
+      
         new_points = x.unsqueeze(2) + rand_directions * local_radius  # (B, N, num_new, C)
         new_points = new_points.view(B, -1, C)  # (B, N*num_new, C)
 
-        # 使用KNN获取局部邻域并进行加权插值
+       
         indices, weights = self.knn(new_points, x)  # indices: (B, N*num_new, k)
 
-        # 获取邻居点
+       
         neighbors = torch.gather(
             x.unsqueeze(1).expand(-1, new_points.shape[1], -1, -1),  # (B, N*num_new, N, C)
             2,
             indices.unsqueeze(-1).expand(-1, -1, -1, C)  # (B, N*num_new, k, C)
         )
 
-        # 加权平均进行插值
+      
         weights = weights.unsqueeze(-1)  # (B, N*num_new, k, 1)
         interpolated_points = torch.sum(neighbors * weights, dim=2)  # (B, N*num_new, C)
 
-        # 合并原始点和插值点
+      
         output = torch.cat([x, interpolated_points], dim=1)  # (B, N + N*num_new, C)
 
         return output
 
 class Transformer(nn.Module):
     """
-    [Point Transformer](https://openaccess.thecvf.com/content/ICCV2021/papers/Zhao_Point_Transformer_ICCV_2021_paper.pdf)
+    
 
     feed forward of transformer
     Args:
@@ -290,14 +289,12 @@ class Feature_extractor(nn.Module):
         # print("feature:",feature.shape)
         loca_point = self.LocalDown(feature)  # 2,128,128
         # print("loca_point",loca_point.shape)
-        local_feature = self.n2f(loca_point)  # 2,128,128
         up_point_localfeature = self.unsampling(feature, local_feature)  # 2,128,128
         up_point_localfeature = self.n2f1(torch.cat([up_point_localfeature, feature], dim=1))  # b,256,N
         # print("111",up_point_localfeature.shape)
 
         Gobal_point = self.GlobalDown(feature)
         # print("gobal",Gobal_point.shape)
-        Global_feature = self.n2f(Gobal_point)
         up_point_Gobalfeature = self.unsampling(feature, Global_feature)
         up_point_Gobalfeature = self.n2f1(torch.cat([up_point_Gobalfeature, feature], dim=1))  # B 128,N
         # print("220", up_point_Gobalfeature.shape)
@@ -313,22 +310,22 @@ class up_block(nn.Module):
     def __init__(self, up_ratio=4, in_channels=128):
         super(up_block, self).__init__()
         self.up_ratio = up_ratio
-        self.num_heads = 4  # 多头注意力，增强特征捕捉能力
-        self.head_dim = in_channels // 4  # 每个头的维度
+        self.num_heads = 4 
+        self.head_dim = in_channels // 4  
         self.qkv_proj = nn.Conv2d(
             in_channels,
-            in_channels * 3,  # Q、K、V各占C维度
+            in_channels * 3, 
             kernel_size=1,
             bias=False
         )
 
-        # 动态权重计算（仅基于特征）
+        # 
         self.alpha_proj = nn.Sequential(
             nn.Conv2d(in_channels, in_channels // 2, kernel_size=1, bias=False),
             nn.BatchNorm2d(in_channels // 2),
             nn.ReLU(inplace=True),
             nn.Conv2d(in_channels // 2, 1, kernel_size=1),
-            nn.Sigmoid()  # 权重范围[0,1]
+            nn.Sigmoid() 
         )
 
         self.merge_proj = nn.Sequential(
@@ -353,7 +350,7 @@ class up_block(nn.Module):
         # print("merged_feat",merged_feat.shape)
         qkv = self.qkv_proj(merged_feat)  # [B, 3C, N, K]
         # print("qvk",qkv.shape)
-        q, k, v = torch.split(qkv, C, dim=1)  # 拆分Q、K、V，各[B, C, N, K]
+        q, k, v = torch.split(qkv, C, dim=1)  # [B, C, N, K]
         # print("q",q.shape)
         q = q.view(B, self.num_heads, self.head_dim, N, self.up_ratio).permute(0, 1, 3, 2, 4)
         k = k.view(B, self.num_heads, self.head_dim, N, self.up_ratio).permute(0, 1, 3, 4, 2)
@@ -363,18 +360,18 @@ class up_block(nn.Module):
         attn_scores = torch.matmul(q, k)  # [B, H, C/H, N, K]
         # rint("attn_scores",atres / (self.head_dim ** 0.5)
         attn_scores = attn_scores / (self.head_dim ** 0.5)
-        attn_weights = F.softmax(attn_scores, dim=-1)  # [B, H, C/H, N, K]（沿K维度归一化）
+        attn_weights = F.softmax(attn_scores, dim=-1)  # [B, H, C/H, N, K]
         # print("attn_weights",attn_weights.shape)  #[2, 4, 32, 4, 256]
-        # 加权聚合V特征：[B, H, C/H, N, K] → [B, C, N, K]
+        #[B, H, C/H, N, K] → [B, C, N, K]
         # attn_output = torch.einsum('bhcnk, bhcmk -> bhcdn', attn_weights, v)  # [2,4,32,256,32]
         attn_output = torch.matmul(attn_weights, v)
         attn_output = attn_output.permute(0, 1, 3, 2, 4).contiguous()
         # print("attn_output",attn_output.shape)
-        attn_output = attn_output.view(B, C, N, self.up_ratio)  # 合并H和head_dim → [B, C, N, K]
+        attn_output = attn_output.view(B, C, N, self.up_ratio)  # head_dim → [B, C, N, K]
         # print("attn_output1",attn_output.shape)
         attn_agg = attn_output.mean(dim=-1, keepdim=True)  # [B, C, N, 1]
-        alpha = self.alpha_proj(attn_agg)  # [B, 1, N, 1]（范围[0,1]）
-        alpha = alpha.expand(-1, -1, -1, self.up_ratio)  # [B, 1, N, up_ratio]（扩展至上采样维度）
+        alpha = self.alpha_proj(attn_agg)  # [B, 1, N, 1]（[0,1]）
+        alpha = alpha.expand(-1, -1, -1, self.up_ratio)  # [B, 1, N, up_ratio]
         # print("a",alpha.shape)
         interpolated = alpha * center_features + (1 - alpha) * group_feature
         interpolated = interpolated.reshape(B, C, -1)
@@ -404,7 +401,7 @@ class Upsampling_unit(nn.Module):
         self.up_ratio = up_ratio
         self.uniform = UniformInterpolationLayer(k=16, num_new_points_per_point=int(self.up_ratio-1))
     def forward(self, point_feat, point):
-        duplicated_feat = self.duplicated_branch(point_feat)  # 特征扩张
+        duplicated_feat = self.duplicated_branch(point_feat) 
         up_point1 =self.uniform(point).permute(0,2,1).contiguous()
         up_point = self.Encoder(up_point1)
         up_feat = self.mlp_2(torch.cat([duplicated_feat, up_point], dim=1))
