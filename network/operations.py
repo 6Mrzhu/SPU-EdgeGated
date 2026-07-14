@@ -97,16 +97,16 @@ def group_knn(k, query, points, unique=True, NCHW=True):
     batch_size, num_points, _ = points_trans.size()  # B,M,C
     assert (num_points >= k
             ), "points size must be greater or equal to k"
-    # 生成距离矩阵
+
     D = __batch_distance_matrix_general(query_trans, points_trans)
-    if unique:  # 邻域包含唯一点
+    if unique:  
         # prepare duplicate entries
         points_np = points_trans.detach().cpu().numpy()
         indices_duplicated = np.ones(
             (batch_size, 1, num_points), dtype=np.int32)
 
         for idx in range(batch_size):
-            # np.unique()去除重复，返回唯一值及其对应的索引
+            # np.unique()
             _, indices = np.unique(points_np[idx], return_index=True, axis=0)
             indices_duplicated[idx, :, indices] = 0
 
